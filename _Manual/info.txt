@@ -1,0 +1,36 @@
+Zustand React State Management Course (Simple Redux Alternative)
+--------------------------------------------------------------------
+https://www.youtube.com/watch?v=fZPgBnL2x-Q  (1:24:38)
+78:55
+
+- cd kanban-zustand
+- npm create vite@latest .
+- npm i
+- npm zustand
+- npm run dev
+
+
+
+
+
+
+
+
+## Install and setup tailwindcss https://tailwindcss.com/docs/guides/vite
+- npm install -D tailwindcss postcss autoprefixer
+- npx tailwindcss init -p
+
+- npm i react-type-animation --save
+
+## Sending email using app.getform.io
+
+
+- npm install gh-pages
+
+
+Deploy react app to GitHub pages:
+---------------------------------
+https://www.makeuseof.com/how-to-deploy-react-app-with-github-pages/
+Deploy reactVite.js  app to GitHub pages:
+-----------------------------------------
+https://dev.to/shashannkbawa/deploying-vite-app-to-github-pages-3ane
