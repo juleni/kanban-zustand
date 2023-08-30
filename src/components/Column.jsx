@@ -39,9 +39,20 @@ export default function Column({ state }) {
     shallow
   );
 
+  const addTask = useStore((store) => store.addTask);
+
   return (
     <div className="column">
-      <p>{state}</p>
+      <div className="titleWrapper">
+        <p>{state}</p>
+        <button
+          onClick={() => {
+            addTask("added " + state, state);
+          }}
+        >
+          Add
+        </button>
+      </div>
       {tasks.map((task) => (
         <Task title={task.title} key={task.title} />
       ))}
