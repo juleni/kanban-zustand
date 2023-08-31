@@ -33,3 +33,7 @@
 .DONE {
   background: var(--COLOR-DONE);
 }
+
+.task img {
+  height: 1.25rem;
+}
