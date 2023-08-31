@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useState } from "react";
 import { shallow } from "zustand/shallow";
 import { useStore } from "../store";
@@ -7,6 +8,7 @@ import Task from "./Task";
 export default function Column({ state }) {
   const [text, setText] = useState("");
   const [open, setOpen] = useState(false);
+  const [drop, setDrop] = useState(false);
 
   /** Comparison function options:
    * 1. Use useMemo
@@ -49,10 +51,18 @@ export default function Column({ state }) {
 
   return (
     <div
-      className="column"
-      onDragOver={(e) => e.preventDefault()}
+      className={classNames("column", { drop: drop })}
+      onDragOver={(e) => {
+        setDrop(true);
+        e.preventDefault();
+      }}
+      onDragLeave={(e) => {
+        setDrop(false);
+        e.preventDefault();
+      }}
       onDrop={(e) => {
         moveTask(draggedTask, state);
+        setDrop(false);
         setDraggedTask(null);
       }}
     >
