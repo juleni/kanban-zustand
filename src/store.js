@@ -24,6 +24,15 @@ const store = (set) => ({
     })),
 });
 
+const log = (config) => (set, get, api) =>
+  config(
+    (...args) => {
+      console.log(args); set(...args);
+    },
+    get,
+    api
+  );
+
 export const useStore = createWithEqualityFn(
-  persist(devtools(store), { name: "store" })
+  log(persist(devtools(store), { name: "store" }))
 );
