@@ -1,10 +1,16 @@
+// Install chrome Redux DevTools extension
+import { devtools, persist } from "zustand/middleware";
 import { createWithEqualityFn } from "zustand/traditional";
 
 const store = (set) => ({
-  tasks: [{ title: "TestTask", state: "DONE" }],
+  tasks: [],
   draggedTask: null,
   addTask: (title, state) =>
-    set((store) => ({ tasks: [...store.tasks, { title, state }] })),
+    set(
+      (store) => ({ tasks: [...store.tasks, { title, state }] }),
+      false,
+      "addTask"
+    ),
   deleteTask: (title) =>
     set((store) => ({
       tasks: store.tasks.filter((task) => task.title !== title),
@@ -18,4 +24,6 @@ const store = (set) => ({
     })),
 });
 
-export const useStore = createWithEqualityFn(store);
+export const useStore = createWithEqualityFn(
+  persist(devtools(store), { name: "store" })
+);
